@@ -1,0 +1,106 @@
+
+/*****************************
+* Font
+******************************/
+@font-face {
+    font-family: 'Noto Sans KR';
+    src: url(../fonts/NotoSansKR-DemiLight.woff2) format('woff2'),
+    url(../fonts/NotoSansKR-DemiLight.woff) format('woff'),
+    url(../fonts/NotoSansKR-DemiLight.otf) format('opentype');
+}
+
+/*****************************
+* slide Style
+******************************/
+body{
+    font-family:'Noto Sans KR',sans-serif;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.slide-wrapper{
+    overflow    : hidden;
+}
+.cat-slide{
+    padding: 0;
+}
+.cat-slide li{
+    float: left;
+    margin: 0;
+    list-style: none;
+}
+
+/*****************************
+ * example style
+ ******************************/
+ .arrow span{
+    cursor: pointer;
+    user-select: none;
+ }
+ .arrow{
+    display: flex;
+    align-items: center;
+    margin-top: 3vh;
+    justify-content: space-between;
+ }
+/**
+ * arrow css
+ * https://velog.io/@korea_webclass/css-1
+ */
+#prevBtn::after{
+    content: '';
+    width: 1.5vw;
+    height: 1.5vw;
+    border-top: 2px solid #121212;
+    border-right: 2px solid #121212;
+    display: inline-block;
+    transform: rotate(225deg); /* 각도 */
+    position: relative;
+    /* position: absolute;
+    top: 27vh;
+    left: 20vw; */
+}
+#nextBtn::after{
+    content: '';
+    width: 1.5vw;
+    height: 1.5vw;
+    border-top: 2px solid #121212;
+    border-right: 2px solid #121212;
+    display: inline-block;
+    transform: rotate(45deg); /* 각도 */
+    position: relative;
+    /* position: absolute;
+    top: 27vh;
+    left: 20vw; */
+}
+.slide-wrapper{
+    display: -webkit-box;
+    border: 1px solid #cccccc;
+    box-sizing: border-box;
+}
+.slider-options{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    display: inline-block;
+}
+.slider-options input{
+    padding: 6px 22px;
+    border: 1px solid #89d6f9;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+    background: #89d6f9;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-align: center;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    outline: none;
+}

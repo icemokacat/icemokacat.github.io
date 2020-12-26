@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"   content="width=device-width, initial-scale=1.0">
+    <meta name="content"    content="Cat-Slider :: Responsive web mobile touch slider">
+    <title>Cat-Slider</title>
+
+    <!-- CSS -->
+    <link href="css/normalize.css" rel="stylesheet" />
+	<link href="css/style.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">        
+        <div class="slider-options">
+            <h2>Cat-Slider</h2>
+            <input type="button" value="Slide Set" onClick="javascript:slideSetting()" />
+            <div class="arrow">
+                <span id="prevBtn"></span>
+                <span id="nextBtn"></span>
+            </div>
+        </div>
+        <div class="slide-wrapper">
+            <ul class="cat-slide">
+                <!-- <li class="slide-ele">
+                   <img src='img/slider-120-1.jpg' /> 
+                </li>
+                <li class="slide-ele">
+                    <img src='img/slider-120-2.jpg' /> 
+                 </li>
+                 <li class="slide-ele">
+                    <img src='img/slider-120-3.jpg' /> 
+                 </li>
+                 <li class="slide-ele">
+                    <img src='img/slider-120-4.jpg' /> 
+                 </li> -->
+            </ul>
+        </div>       
+        <div class="slider-options">
+            <div>
+                <p>랜덤 이미지</p>
+                <select id="ws">
+                    <option value="0">Image Width Select</option>
+                    <option value=120>120</option>
+                    <option value=180>180</option>
+                    <option value=240>240</option>
+                    <option value=300>300</option>
+                    <option value=768>768(iPad)</option>
+                    <option value=1024>1024(iPad Pro)</option>
+                </select>
+                <input type="button" value="DRAW !" onClick="javascript:randomImg()" />
+                <p>이미지 제공 http://placeimg.com/</p>
+            </div>            
+        </div>
+    </div>
+
+    <!-- JS -->
+    <script src="js/jquery-3.5.1.js"></script>
+    <script src="js/jquery.mobile.custom.js"></script>
+    <script src="js/jquery.catSlider-1.0.0.js"></script>
+
+    <script>
+        $('#prevBtn').on('click',function(){
+            $.catSlider.slideMove(true);
+        })
+        $('#nextBtn').on('click',function(){
+            $.catSlider.slideMove(false);
+        })
+        function randomImg(){
+            var w = $('#ws').val();
+            var h = 200;
+            var imgSrc = "http://placeimg.com/"+w+"/"+h+"/any";
+
+            var slideCnt = 10;
+
+            $('.cat-slide').empty();
+            for(var i=0;i<slideCnt;i++){
+                $('.cat-slide').append(
+                    $('<li/>').addClass('slide-ele').append(
+                        $('<img/>').attr('src',imgSrc)
+                    )
+                )
+            }
+        }
+        function IsImageOk(img) {
+            // During the onload event, IE correctly identifies any images that
+            // weren’t downloaded as not complete. Others should too. Gecko-based
+            // browsers act like NS4 in that they report this incorrectly.
+            if (!img.complete) {
+                return false;
+            }
+
+            // However, they do have two very useful properties: naturalWidth and
+            // naturalHeight. These give the true size of the image. If it failed
+            // to load, either of these should be zero.
+            if (img.naturalWidth === 0) {
+                return false;
+            }
+
+            // No other way of checking: assume it’s ok.
+            return true;
+        }
+        function slideSetting(){
+            var setting = {
+                wrapperTarget   : $('.slide-wrapper'),
+                target          : $('.cat-slide'),
+                childtarget     : $('.cat-slide li'),
+                oneImgOnSlide   : false,
+                space           : true,
+                spacepx         : 10,
+                leftCallBackFunc : function(){
+                    console.log('left !');
+                },
+                rightCallBackFunc : function(){
+                    console.log('right !');
+                }
+            }
+            $.catSlider.init(setting);
+        }
+        
+    </script>
+</body>
+</html>
