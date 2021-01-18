@@ -1,6 +1,6 @@
 ### Hi  😄
 
-### Cat-Slider : https://icemokacat.github.io/cat-slider
+[Cat-Slider](https://icemokacat.github.io/cat-slider) 이미지 슬라이더
 
 <!--
 **icemokacat/icemokacat** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
